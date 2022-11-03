@@ -1,12 +1,12 @@
 # dyn-ec2-allpurposes-tagging
 
 zip dyn-ec2-allpurposes-tagging.zip dyn-ec2-allpurposes-tagging.py
-
+```
 aws lambda create-function --function-name dyn-ec2-allpurposes-tagging \
   --runtime python3.9 --role arn:aws:iam::<account-id>:role/AWSLambda-TaggingAutomations \
   --handler dyn-ec2-allpurposes-tagging.lambda_handler --timeout 10 --zip-file fileb://./dyn-ec2-allpurposes-tagging.zip \
   --region eu-west-2 --profile default
-   
+```   
 aws lambda update-function-configuration --function-name dyn-ec2-allpurposes-tagging \
   --zip-file fileb://./dyn-ec2-allpurposes-tagging.zip --region eu-west-2 --profile default
    
