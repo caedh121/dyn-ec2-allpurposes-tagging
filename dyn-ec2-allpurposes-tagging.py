@@ -66,6 +66,19 @@ def lambda_handler(event, context):
 
         except:
             print("IsVolumeOrphan: yes")
+            tag_snp = ec2_client.create_tags(
+                    Resources=[
+                        this_snp,
+                    ],
+                    Tags=[
+                        {
+                            'Key': 'isVolumeOrphan',
+                            'Value': 'yes',
+                        },
+                        {
+                            'Key': 'Taggedby',
+                            'Value': 'snp-tagging',
+                        }, ])
 
     if event_type == "EBS Multi-Volume Snapshots Completion Status":
         snps = event['detail']['snapshots']
